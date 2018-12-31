@@ -1,0 +1,39 @@
+{
+  "name": "would_you_rather",
+  "version": "1.0.0",
+  "description": "This is the starter code for the final assessment project for Udacity's React & Redux course.",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-redux": "^6.0.0",
+    "react-redux-loading": "^1.0.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^2.1.2",
+    "react-thunk": "^1.0.0",
+    "redux": "^4.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhyang12345/would_you_rather.git"
+  },
+  "author": "Jae-Hyeong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhyang12345/would_you_rather/issues"
+  },
+  "homepage": "https://github.com/jhyang12345/would_you_rather#readme",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
