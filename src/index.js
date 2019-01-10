@@ -10,6 +10,8 @@ import middleware from './middleware'
 const store = createStore(reducer, middleware)
 
 ReactDom.render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 )
