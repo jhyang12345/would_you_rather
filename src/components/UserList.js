@@ -23,8 +23,12 @@ class UserList extends Component {
 
 function mapStateToProps({ users }) {
   console.log(users)
+  const userList = []
+  for (let key in users) {
+    userList.push(users[key])
+  }
   return {
-    users,
+    users: userList,
   }
 }
 

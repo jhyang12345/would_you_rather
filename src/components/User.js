@@ -7,7 +7,9 @@ class User extends Component {
     const { user } = this.props
 
     return (
-      <div>User</div>
+      <div className="user-container">
+        <div className="user-name">{user.name}</div>
+      </div>
     )
   }
 }
