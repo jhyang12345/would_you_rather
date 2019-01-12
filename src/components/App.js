@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from "../actions/shared"
+import UserList from "./UserList"
 
 class App extends Component {
   componentDidMount() {
@@ -9,15 +10,30 @@ class App extends Component {
   }
 
   render() {
+    const {users} = this.props
     return (
-      <div>React App</div>
+      <Router>
+        <Fragment>
+          {this.props.authorized !== true
+            ? <Route path="/" component={UserList} />
+            :
+              <div>
+                Logged out
+              </div>
+
+          }
+          <div className="container">
+
+          </div>
+        </Fragment>
+      </Router>
     )
   }
 }
 
-function mapStateToProps({ }) {
+function mapStateToProps({ authedUser }) {
   return {
-
+    authorized: authedUser === null
   }
 }
 
