@@ -5,6 +5,7 @@ import { handleInitialData } from "../actions/shared"
 import LoadingBar from 'react-redux-loading'
 import UserList from "./UserList"
 import Nav from "./Nav"
+import NewQuestion from "./NewQuestion"
 
 class App extends Component {
   componentDidMount() {
@@ -23,9 +24,8 @@ class App extends Component {
               ? <Route path="/" component={UserList} />
               :
                 <div>
-                  Logged in
+                  <Route path="/new" component={NewQuestion} />
                 </div>
-
             }
           </div>
         </Fragment>

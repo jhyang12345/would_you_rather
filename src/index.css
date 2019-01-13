@@ -5,6 +5,10 @@ body {
   color: #252525;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 a {
   text-decoration: none;
   color: inherit;
