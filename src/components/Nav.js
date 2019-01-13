@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import "../css/Nav.css"
 
 
 class Nav extends Component {
@@ -16,8 +17,8 @@ class Nav extends Component {
             </NavLink>
           </li>
           {authorizeUser !== null &&
-            <span class="authorized-user">
-              Name
+            <span className="authorized-user">
+              {authorizeUser.name}
             </span>
           }
         </ul>

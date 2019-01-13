@@ -1,3 +1,5 @@
 .authorized-user {
-  float: right;
+  margin-left: auto;
+
+  padding: 10px;
 }
