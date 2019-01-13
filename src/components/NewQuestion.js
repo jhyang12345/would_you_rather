@@ -4,6 +4,11 @@ import { Link, withRouter, Redirect } from 'react-router-dom'
 import "../css/NewQuestion.css"
 
 class NewQuestion extends Component {
+  handleQuestionSubmit = (evt) => {
+    evt.preventDefault()
+    console.log("Question submitted!")
+  }
+
   render() {
     return (
       <div className="question-holder">
@@ -19,19 +24,19 @@ class NewQuestion extends Component {
         <div className="question-input-holder">
           <input
             type="text"
-            placeholder="Enter Option One TextHere"
+            placeholder="Enter Option One Text Here"
             />
 
-          <div class="text-divider">
+          <div className="text-divider">
             <span>OR</span>
           </div>
 
           <input
             type="text"
-            placeholder="Enter Option One TextHere"
+            placeholder="Enter Option Two Text Here"
             />
 
-          <button>
+          <button onClick={this.handleQuestionSubmit}>
             Submit
           </button>
         </div>

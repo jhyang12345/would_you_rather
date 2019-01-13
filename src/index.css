@@ -9,6 +9,8 @@ body {
   box-sizing: border-box;
 }
 
+textarea, select, input, button { outline: none; }
+
 a {
   text-decoration: none;
   color: inherit;
