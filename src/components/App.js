@@ -18,7 +18,7 @@ class App extends Component {
             ? <Route path="/" component={UserList} />
             :
               <div>
-                Logged out
+                Logged in
               </div>
 
           }
@@ -31,9 +31,9 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authorizeUser }) {
   return {
-    authorized: authedUser === null
+    authorized: authorizeUser !== null
   }
 }
 
