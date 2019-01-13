@@ -16,6 +16,11 @@ class Nav extends Component {
               Home
             </NavLink>
           </li>
+          <li>
+            <NavLink to='/new' activeClassName='active'>
+              New Question
+            </NavLink>
+          </li>
           {authorizeUser !== null &&
             <span className="authorized-user">
               {authorizeUser.name}

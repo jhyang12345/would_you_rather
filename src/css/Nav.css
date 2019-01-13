@@ -1,5 +1,16 @@
 .authorized-user {
   margin-left: auto;
-
   padding: 10px;
+}
+
+nav.nav {
+  background-color: #1d4d6f;
+  color: #FAFAFA;
+}
+
+nav.nav > ul {
+  margin: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
 }

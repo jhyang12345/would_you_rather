@@ -16,9 +16,9 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
+          <Nav />
+          <LoadingBar />
           <div className="container">
-            <LoadingBar />
-            <Nav />
             {this.props.authorized !== true
               ? <Route path="/" component={UserList} />
               :
