@@ -4,12 +4,30 @@ import { Link, withRouter, Redirect } from 'react-router-dom'
 import "../css/NewQuestion.css"
 
 class NewQuestion extends Component {
+
+  state = {
+    optionOne: "",
+    optionTwo: "",
+  }
+
   handleQuestionSubmit = (evt) => {
     evt.preventDefault()
     console.log("Question submitted!")
   }
 
+  handleChange = (evt) => {
+    const text = evt.target.value;
+    const name = evt.target.name;
+
+    this.setState(() => ({
+      [name]: text,
+    }))
+
+  }
+
   render() {
+    const {optionOne, optionTwo} = this.state
+
     return (
       <div className="question-holder">
         <div className="question-header">
@@ -25,6 +43,9 @@ class NewQuestion extends Component {
           <input
             type="text"
             placeholder="Enter Option One Text Here"
+            name="optionOne"
+            value={optionOne}
+            onChange={this.handleChange}
             />
 
           <div className="text-divider">
@@ -34,6 +55,9 @@ class NewQuestion extends Component {
           <input
             type="text"
             placeholder="Enter Option Two Text Here"
+            name="optionTwo"
+            value={optionTwo}
+            onChange={this.handleChange}
             />
 
           <button onClick={this.handleQuestionSubmit}>

@@ -4,7 +4,7 @@
   width: 400px;
 
   border: #CCC solid 1px;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
 .question-header {
@@ -80,5 +80,5 @@
 
 .question-holder button:hover {
   cursor: pointer;
-  
+
 }
