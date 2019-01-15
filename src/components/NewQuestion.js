@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter, Redirect } from 'react-router-dom'
 import "../css/NewQuestion.css"
+import { saveQuestion } from '../utils/api.js'
 
 class NewQuestion extends Component {
 
@@ -12,7 +13,16 @@ class NewQuestion extends Component {
 
   handleQuestionSubmit = (evt) => {
     evt.preventDefault()
+
+    const { authorizeUser } = this.props
+    const { optionOne, optionTwo } = this.state
     console.log("Question submitted!")
+    console.log(authorizeUser);
+    saveQuestion({
+      author: authorizeUser.id,
+      optionOneText: optionOne,
+      optionTwoText: optionTwo,
+    })
   }
 
   handleChange = (evt) => {
@@ -69,9 +79,9 @@ class NewQuestion extends Component {
   }
 }
 
-function mapStateToProps() {
+function mapStateToProps({authorizeUser}) {
   return {
-
+    authorizeUser,
   }
 }
 
