@@ -11,10 +11,7 @@ export default function questions (state = {}, action) {
       console.log(action)
       return {
         ...state,
-        questions: {
-          // ...questions,
-          [action.question.id]: action.question
-        },
+        [action.question.id]: action.question
         // questions : action.question
       }
     default :
