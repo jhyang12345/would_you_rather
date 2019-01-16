@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter, Redirect } from 'react-router-dom'
 import "../css/NewQuestion.css"
-import { saveQuestion } from '../utils/api.js'
+import { handleAddQuestion } from '../actions/questions.js'
 
 class NewQuestion extends Component {
 
@@ -14,15 +14,15 @@ class NewQuestion extends Component {
   handleQuestionSubmit = (evt) => {
     evt.preventDefault()
 
-    const { authorizeUser } = this.props
+    const { authorizeUser, dispatch } = this.props
     const { optionOne, optionTwo } = this.state
     console.log("Question submitted!")
     console.log(authorizeUser);
-    saveQuestion({
+    dispatch(handleAddQuestion({
       author: authorizeUser.id,
       optionOneText: optionOne,
       optionTwoText: optionTwo,
-    })
+    }))
   }
 
   handleChange = (evt) => {
