@@ -6,6 +6,7 @@ import LoadingBar from 'react-redux-loading'
 import UserList from "./UserList"
 import Nav from "./Nav"
 import NewQuestion from "./NewQuestion"
+import Dashboard from "./Dashboard"
 
 class App extends Component {
   componentDidMount() {
@@ -24,6 +25,7 @@ class App extends Component {
               ? <Route path="/" component={UserList} />
               :
                 <div>
+                  <Route path="/" component={Dashboard} />
                   <Route path="/new" component={NewQuestion} />
                 </div>
             }
