@@ -14,18 +14,18 @@ class App extends Component {
   }
 
   render() {
-    const {users} = this.props
+    const {users, authorizeUser} = this.props
     return (
       <Router>
         <Fragment>
-          <Nav />
+          <Nav authorizeUser={authorizeUser}/>
           <LoadingBar />
           <div className="container">
             {this.props.authorized !== true
               ? <Route path="/" component={UserList} />
               :
                 <div>
-                  <Route path="/" component={Dashboard} />
+                  <Route path="/" exact component={Dashboard} />
                   <Route path="/new" component={NewQuestion} />
                 </div>
             }
@@ -38,7 +38,8 @@ class App extends Component {
 
 function mapStateToProps({ authorizeUser }) {
   return {
-    authorized: authorizeUser !== null
+    authorized: authorizeUser !== null,
+    authorizeUser
   }
 }
 
