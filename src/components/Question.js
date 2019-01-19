@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import "../css/Question.css"
 
+import avatar from '../images/avatar.png'
+
 class Question extends Component {
 
   render() {
@@ -12,14 +14,16 @@ class Question extends Component {
     return (
       <div className="question-container">
         <div className="author-header">Asked by {author}</div>
-        <div className="author-profile-holder"></div>
+        <div className="author-profile-holder">
+          <img src={avatar} />
+        </div>
         <div className="options-holder">
           <form className="options-form">
-            <div>
+            <div className="radio-container">
               <input type="radio" value="optionOne"/>
               <label for="optionOne">{optionOne.text}</label>
             </div>
-            <div>
+            <div className="radio-container">
               <input type="radio" value="optionTwo"/>
               <label for="optionTwo">{optionTwo.text}</label>
             </div>

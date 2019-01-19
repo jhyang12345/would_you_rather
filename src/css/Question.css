@@ -14,17 +14,28 @@
 }
 
 .author-profile-holder {
-  width: 120px;
-  height: 100%;
+  width: 39%;
+  height: auto;
+  min-height: 120px;
   float: left;
   border-right: 1px solid #CCC;
+}
 
+.author-profile-holder img {
+  width: 120px;
+  height: 120px;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 .options-holder {
   float: right;
   padding: 8px;
-  width: 50%;
+  width: 60%;
 }
 
 .options-form button {
@@ -36,7 +47,17 @@
   padding: 6px;
   margin-top: 8px;
   width: 100%;
+}
 
+.options-form div.radio-container {
+  display: flex;
+  height: 24px;
+  align-items: center;
+}
+
+.options-form input[type="radio"] {
+  margin-top: 0px;
+  margin-right: 4px;
 }
 
 .question-container form {
