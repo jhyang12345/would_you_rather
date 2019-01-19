@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import "../css/Question.css"
 
@@ -6,20 +6,31 @@ class Question extends Component {
 
   render() {
     const { question } = this.props
+    // author is id of author not the name
     const { author, id, optionOne, optionTwo, timestamp } = question
-
+    console.log(optionOne);
     return (
-      <Fragment>
-        <div className="author-header">{author}</div>
+      <div className="question-container">
+        <div className="author-header">Asked by {author}</div>
         <div className="author-profile-holder"></div>
-        <div className="question-holder">
+        <div className="options-holder">
           <form className="options-form">
-            <input type="radio" className="optionOne" value={optionOne}/>
-            <input type="radio" className="optionTwo" value={optionTwo}/>
+            <div>
+              <input type="radio" value="optionOne"/>
+              <label for="optionOne">{optionOne.text}</label>
+            </div>
+            <div>
+              <input type="radio" value="optionTwo"/>
+              <label for="optionTwo">{optionTwo.text}</label>
+            </div>
+            <div>
+              <button>Submit</button>
+            </div>
+
           </form>
 
         </div>
-      </Fragment>
+      </div>
     )
   }
 }
