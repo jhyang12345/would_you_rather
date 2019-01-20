@@ -20,12 +20,12 @@ class Question extends Component {
         <div className="options-holder">
           <form className="options-form">
             <div className="radio-container">
-              <input type="radio" value="optionOne"/>
-              <label for="optionOne">{optionOne.text}</label>
+              <input name="radio_{id}" type="radio" value="optionOne"/>
+              <label htmlFor="optionOne">{optionOne.text}</label>
             </div>
             <div className="radio-container">
-              <input type="radio" value="optionTwo"/>
-              <label for="optionTwo">{optionTwo.text}</label>
+              <input name="radio_{id}" type="radio" value="optionTwo"/>
+              <label htmlFor="optionTwo">{optionTwo.text}</label>
             </div>
             <div>
               <button>Submit</button>
