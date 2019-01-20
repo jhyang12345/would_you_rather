@@ -14,3 +14,14 @@ nav.nav > ul {
   margin-right: auto;
   width: 800px;
 }
+
+.logout-button {
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.logout-button:hover {
+  cursor: pointer;
+  background-color: #4a708b;
+
+}

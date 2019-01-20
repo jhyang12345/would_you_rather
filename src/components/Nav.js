@@ -1,6 +1,7 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import { connect } from 'react-redux'
 import { NavLink, withRouter } from 'react-router-dom'
+import Logout from './Logout'
 import "../css/Nav.css"
 
 class Nav extends Component {
@@ -21,10 +22,12 @@ class Nav extends Component {
           </NavLink>
         </li>
         {authorizeUser !== null &&
-          <span className="authorized-user">
-            {authorizeUser.name}
-          </span>
-
+          <Fragment>
+            <span className="authorized-user">
+              {authorizeUser.name}
+            </span>
+            <Logout></Logout>
+          </Fragment>
         }
       </ul>
     </nav>
