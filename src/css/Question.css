@@ -49,6 +49,10 @@
   width: 100%;
 }
 
+.options-form button:disabled{
+  background-color: #DDD;
+}
+
 .options-form div.radio-container {
   display: flex;
   height: 24px;

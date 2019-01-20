@@ -61,7 +61,11 @@ class Question extends Component {
               <label htmlFor="optionTwo">{optionTwo.text}</label>
             </div>
             <div>
-              <button>Submit</button>
+              <button
+                disabled={
+                  this.state.selected === null
+                }
+                >Submit</button>
             </div>
 
           </form>
