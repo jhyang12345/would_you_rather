@@ -12,6 +12,11 @@ class Question extends Component {
     optionTwo: false,
   }
 
+  handleButtonClick = (evt) => {
+    evt.preventDefault()
+    console.log("Submitted!")
+  }
+
   handleOptionChange = (evt) => {
     const name = evt.target.name
     const value = evt.target.value
@@ -22,8 +27,6 @@ class Question extends Component {
       selected: value,
       [value]: checked,
     }))
-    console.log(this.state)
-    console.log(value)
   }
 
   render() {
@@ -62,6 +65,7 @@ class Question extends Component {
             </div>
             <div>
               <button
+                onClick={this.handleButtonClick}
                 disabled={
                   this.state.selected === null
                 }

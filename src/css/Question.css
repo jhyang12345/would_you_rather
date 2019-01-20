@@ -49,6 +49,10 @@
   width: 100%;
 }
 
+.options-form button:hover {
+  cursor: pointer;
+}
+
 .options-form button:disabled{
   background-color: #DDD;
 }
