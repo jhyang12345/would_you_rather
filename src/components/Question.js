@@ -22,7 +22,6 @@ class Question extends Component {
     const value = evt.target.value
     const checked = evt.target.checked
 
-
     this.setState(() => ({
       selected: value,
       [value]: checked,
