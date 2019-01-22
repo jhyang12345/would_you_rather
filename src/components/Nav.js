@@ -21,6 +21,11 @@ class Nav extends Component {
             New Question
           </NavLink>
         </li>
+        <li>
+          <NavLink to='/ranking' activeClassName='active'>
+            Ranking
+          </NavLink>
+        </li>          
         {authorizeUser !== null &&
           <Fragment>
             <span className="authorized-user">
