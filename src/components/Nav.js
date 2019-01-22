@@ -4,7 +4,6 @@ import { NavLink, withRouter } from 'react-router-dom'
 import Logout from './Logout'
 import "../css/Nav.css"
 
-// Added comments
 class Nav extends Component {
   render() {
     const { authorizeUser } = this.props
@@ -26,7 +25,7 @@ class Nav extends Component {
           <NavLink to='/ranking' activeClassName='active'>
             Ranking
           </NavLink>
-        </li>
+        </li>          
         {authorizeUser !== null &&
           <Fragment>
             <span className="authorized-user">
