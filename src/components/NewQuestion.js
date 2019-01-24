@@ -9,6 +9,7 @@ class NewQuestion extends Component {
   state = {
     optionOne: "",
     optionTwo: "",
+    toHome: false,
   }
 
   handleQuestionSubmit = (evt) => {
@@ -22,6 +23,10 @@ class NewQuestion extends Component {
       author: authorizeUser.id,
       optionOneText: optionOne,
       optionTwoText: optionTwo,
+    }))
+
+    this.setState(() => ({
+      toHome: true,
     }))
   }
 
@@ -37,6 +42,8 @@ class NewQuestion extends Component {
 
   render() {
     const {optionOne, optionTwo} = this.state
+
+    if (this.state.toHome) return <Redirect to='/' />
 
     return (
       <div className="question-holder">
