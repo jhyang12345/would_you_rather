@@ -8,8 +8,6 @@ class Question extends Component {
 
   state = {
     selected: null,
-    optionOne: false,
-    optionTwo: false,
   }
 
   handleButtonClick = (evt) => {
@@ -24,7 +22,13 @@ class Question extends Component {
 
     this.setState(() => ({
       selected: value,
-      [value]: checked,
+    }))
+  }
+
+  toggleOption = (value) => {
+    console.log(this.state)
+    this.setState(() => ({
+      selected: value,
     }))
   }
 
@@ -44,23 +48,29 @@ class Question extends Component {
           <form className="options-form">
             <div className="radio-container">
               <input
-                onChange={this.handleOptionChange}
+                onChange={this.toggleOption.bind(this, "optionOne")}
                 name={"radio_" + id}
                 type="radio"
                 value="optionOne"
-                checked={this.state.optionOne}
+                checked={this.state.selected === "optionOne"}
                 />
-              <label htmlFor="optionOne">{optionOne.text}</label>
+              <label
+              htmlFor="optionOne"
+              onClick={this.toggleOption.bind(this, "optionOne")}
+              >{optionOne.text}</label>
             </div>
             <div className="radio-container">
               <input
-                onChange={this.handleOptionChange}
+                onChange={this.toggleOption.bind(this, "optionTwo")}
                 name={"radio_" + id}
                 type="radio"
                 value="optionTwo"
-                checked={this.state.optionTwo}
+                checked={this.state.selected === "optionTwo"}
                 />
-              <label htmlFor="optionTwo">{optionTwo.text}</label>
+              <label
+              htmlFor="optionTwo"
+              onClick={this.toggleOption.bind(this, "optionTwo")}
+              >{optionTwo.text}</label>
             </div>
             <div>
               <button
