@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from "../actions/shared"
+import "../css/App.css"
 import LoadingBar from 'react-redux-loading'
 import UserList from "./UserList"
 import Nav from "./Nav"
