@@ -9,6 +9,12 @@ class Question extends Component {
 
   state = {
     selected: null,
+    fixed: false,
+  }
+
+  componentDidMount() {
+    const { voted } = this.props
+    if (voted) this.checkAnsweredOption()
   }
 
   handleButtonClick = (evt) => {
@@ -23,6 +29,23 @@ class Question extends Component {
     }))
   }
 
+  checkAnsweredOption = () => {
+    const { question, authorizeUser } = this.props
+
+    const id = authorizeUser.id
+    if (question.optionOne.votes.includes(id)) {
+      this.setState(() => ({
+        selected: "optionOne",
+        fixed: true,
+      }))
+    } else if(question.optionTwo.votes.includes(id)) {
+      this.setState(() => ({
+        selected: "optionTwo",
+        fixed: true,
+      }))
+    }
+  }
+
   handleOptionChange = (evt) => {
     const name = evt.target.name
     const value = evt.target.value
@@ -35,13 +58,14 @@ class Question extends Component {
 
   toggleOption = (value) => {
     console.log(this.state)
+    if (this.state.fixed) return
     this.setState(() => ({
       selected: value,
     }))
   }
 
   render() {
-    const { question } = this.props
+    const { question, voted } = this.props
     // author is id of author not the name
     const { author, id, optionOne, optionTwo, timestamp } = question
 
@@ -59,6 +83,7 @@ class Question extends Component {
                 name={"radio_" + id}
                 type="radio"
                 value="optionOne"
+                disabled={this.state.fixed}
                 checked={this.state.selected === "optionOne"}
                 />
               <label
@@ -72,6 +97,7 @@ class Question extends Component {
                 name={"radio_" + id}
                 type="radio"
                 value="optionTwo"
+                disabled={this.state.fixed}
                 checked={this.state.selected === "optionTwo"}
                 />
               <label
@@ -83,7 +109,8 @@ class Question extends Component {
               <button
                 onClick={this.handleButtonClick}
                 disabled={
-                  this.state.selected === null
+                  this.state.selected === null ||
+                  this.state.fixed
                 }
                 >Submit</button>
             </div>

@@ -22,3 +22,11 @@
 .answered-switch:hover {
   cursor: pointer;
 }
+
+.dashboard-container > li {
+  margin-top: 12px;
+}
+
+.dashboard-container > li:first-child {
+  margin-top: 0px;
+}

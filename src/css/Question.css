@@ -47,6 +47,7 @@
   padding: 6px;
   margin-top: 8px;
   width: 100%;
+  font-size: 0.8em;
 }
 
 .options-form button:hover {
@@ -66,6 +67,10 @@
 .options-form input[type="radio"] {
   margin-top: 0px;
   margin-right: 4px;
+}
+
+.options-form label {
+  margin-left: 6px;
 }
 
 .question-container form {

@@ -60,7 +60,10 @@ class Dashboard extends Component {
             {
               questionList.map((question) => (
                 <li key={question.id}>
-                  <Question question={question}/>
+                  <Question
+                    question={question}
+                    voted={this.hasVoted(question)}
+                    />
                 </li>
               ))
             }
