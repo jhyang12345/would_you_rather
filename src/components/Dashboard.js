@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
 import "../css/Dashboard.css"
@@ -17,8 +17,15 @@ class Dashboard extends Component {
       || question.optionTwo.votes.includes(id)
   }
 
+  switchAnswered = () => {
+    this.setState(() => ({
+      answered: !this.state.answered,
+    }))
+  }
+
   render() {
     const { questions } = this.props
+    const { answered } = this.state
     const questionList = []
     for (let key in questions) {
       const question = questions[key]
@@ -40,15 +47,25 @@ class Dashboard extends Component {
 
     console.log(questionList)
     return (
-      <div className="dashboard-container">
-          {
-            questionList.map((question) => (
-              <li key={question.id}>
-                <Question question={question}/>
-              </li>
-            ))
-          }
-      </div>
+      <Fragment>
+        <span
+          className="answered-switch"
+          onClick={this.switchAnswered}
+          >
+          {answered
+          ? "Answered"
+          : "Not Answered"}
+        </span>
+        <div className="dashboard-container">
+            {
+              questionList.map((question) => (
+                <li key={question.id}>
+                  <Question question={question}/>
+                </li>
+              ))
+            }
+        </div>
+      </Fragment>
     )
   }
 }
