@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import "../css/Question.css"
+import { handleSaveQuestionAnswer } from '../actions/questions.js'
 
 import avatar from '../images/avatar.png'
 
@@ -12,7 +13,14 @@ class Question extends Component {
 
   handleButtonClick = (evt) => {
     evt.preventDefault()
-    console.log("Submitted!")
+    const key = this.state.selected
+    const { dispatch, question, authorizeUser } = this.props
+
+    dispatch(handleSaveQuestionAnswer({
+      authedUser: authorizeUser.id,
+      qid: question.id,
+      answer: key,
+    }))
   }
 
   handleOptionChange = (evt) => {
@@ -37,7 +45,6 @@ class Question extends Component {
     // author is id of author not the name
     const { author, id, optionOne, optionTwo, timestamp } = question
 
-    console.log(optionOne);
     return (
       <div className="question-container">
         <div className="author-header">Asked by {author}</div>
@@ -89,4 +96,10 @@ class Question extends Component {
   }
 }
 
-export default connect()(Question)
+function mapStateToProps({ authorizeUser }) {
+  return {
+    authorizeUser,
+  }
+}
+
+export default connect(mapStateToProps)(Question)
