@@ -27,10 +27,11 @@ class Logout extends Component {
   }
 }
 
+// does dispatch get passed down no matter what?.?
 function mapStateToProps({dispatch}) {
   return {
     dispatch,
   }
 }
 
-export default connect()(Logout)
+export default connect(mapStateToProps)(Logout)
