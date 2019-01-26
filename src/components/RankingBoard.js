@@ -56,9 +56,11 @@ class RankingBoard extends Component {
       <div className="ranking-container">
         {
           // method to escape expression as string
-          userList.map((user) => (
+          userList.map((user, index) => (
             <li key={"user_" + user.id}>
-              <RankingUser user={user} stats={this.getRankingStats(user)}/>
+              <RankingUser user={user}
+                rank={index + 1}
+                stats={this.getRankingStats(user)}/>
             </li>
           ))
         }

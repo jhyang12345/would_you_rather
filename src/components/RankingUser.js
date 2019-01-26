@@ -5,12 +5,15 @@ import avatar from '../images/avatar.png'
 class RankingUser extends Component {
 
   render() {
-    const { user, stats } = this.props
+    const { user, stats, rank } = this.props
     console.log("User:", user)
     console.log("Stats:", stats)
 
     return (
       <div className="ranking-user-container">
+        <span className="ranking-number">
+          {rank}
+        </span>
         <div className="ranking-profile-container">
           <div className="ranking-profile-holder">
             <img src={avatar} />
