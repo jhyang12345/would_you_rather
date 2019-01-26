@@ -23,8 +23,11 @@ class RankingBoard extends Component {
     return (
       <div className="ranking-container">
         {
+          // method to escape expression as string
           userList.map((user) => (
-            <RankingUser />
+            <li key={"user_" + user.id}>
+              <RankingUser user={user}/>
+            </li>
           ))
         }
       </div>
