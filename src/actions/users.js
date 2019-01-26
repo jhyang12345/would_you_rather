@@ -10,8 +10,10 @@ export function receiveUsers (users) {
   }
 }
 
+// somehow add logic to hide content while loading!
 export function handleReceiveUsers() {
   return (dispatch) => {
+    console.log("handleReceiveUsers")
     dispatch(showLoading())
     return getUsers()
       .then((users) => {

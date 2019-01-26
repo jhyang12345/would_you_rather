@@ -28,8 +28,8 @@ class App extends Component {
               :
                 <div>
                   <Route path="/" exact component={Dashboard} />
-                  <Route path="/new" component={NewQuestion} />
-                  <Route path="/ranking" component={RankingBoard} />
+                  <Route path="/add" component={NewQuestion} />
+                  <Route path="/leaderboard" component={RankingBoard} />
                 </div>
             }
           </div>

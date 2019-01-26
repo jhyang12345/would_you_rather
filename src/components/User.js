@@ -11,9 +11,6 @@ class User extends Component {
     const {dispatch, user} = this.props
 
     dispatch(authorizeUser(user))
-
-    console.log(dispatch, user)
-    console.log("Name clicked!")
   }
 
   render() {

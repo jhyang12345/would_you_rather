@@ -157,7 +157,7 @@ export function _saveQuestion (question) {
         ...questions,
         [formattedQuestion.id]: formattedQuestion
       }
-      
+
       users = {
         ...users,
         [authedUser]: {
@@ -166,6 +166,7 @@ export function _saveQuestion (question) {
         }
       }
 
+      console.log("API", users.sarahedo)
       res(formattedQuestion)
     }, 1000)
   })
