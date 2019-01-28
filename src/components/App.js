@@ -9,6 +9,7 @@ import Nav from "./Nav"
 import NewQuestion from "./NewQuestion"
 import Dashboard from "./Dashboard"
 import RankingBoard from "./RankingBoard"
+import QuestionPage from './QuestionPage'
 
 class App extends Component {
   componentDidMount() {
@@ -30,7 +31,7 @@ class App extends Component {
                   <Route path="/" exact component={Dashboard} />
                   <Route path="/add" component={NewQuestion} />
                   <Route path="/leaderboard" component={RankingBoard} />
-                  <Route path="/question/:id" component={TweetPage} />
+                  <Route path="/question/:id" component={QuestionPage} />
                 </div>
             }
           </div>
