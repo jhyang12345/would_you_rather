@@ -5,6 +5,14 @@ import Logout from './Logout'
 import "../css/Nav.css"
 
 class Nav extends Component {
+  state = {
+    toHome: false,
+  }
+
+  logoutRedirect = () => {
+    
+  }
+
   render() {
     const { authorizeUser } = this.props
     console.log("Rerender!")

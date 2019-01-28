@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { authorizeUser } from "../actions/authorizeUser"
+import { unauthorizeUser } from "../actions/authorizeUser"
 
 class Logout extends Component {
 
@@ -10,7 +10,7 @@ class Logout extends Component {
 
     const { dispatch } = this.props
 
-    dispatch(authorizeUser(null))
+    dispatch(unauthorizeUser())
 
     console.log("Logout button clicked!")
   }
