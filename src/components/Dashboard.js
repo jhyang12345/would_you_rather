@@ -23,6 +23,11 @@ class Dashboard extends Component {
     }))
   }
 
+  redirectToQuestion = (questionId) => {
+    // why is history included in props?.?
+    this.props.history.push(`/question/${questionId}`)
+  }
+
   render() {
     const { questions } = this.props
     const { answered } = this.state
@@ -59,7 +64,8 @@ class Dashboard extends Component {
         <div className="dashboard-container">
             {
               questionList.map((question) => (
-                <li key={question.id}>
+                <li key={question.id}
+                  onClick={this.redirectToQuestion.bind(this, question.id)}>
                   <Question
                     question={question}
                     voted={this.hasVoted(question)}

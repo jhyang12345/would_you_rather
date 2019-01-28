@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react'
 import { connect } from 'react-redux'
-import { NavLink, withRouter } from 'react-router-dom'
+import { NavLink, withRouter, Redirect } from 'react-router-dom'
 import Logout from './Logout'
 import "../css/Nav.css"
 
@@ -10,12 +10,17 @@ class Nav extends Component {
   }
 
   logoutRedirect = () => {
-    
+
   }
 
   render() {
     const { authorizeUser } = this.props
     console.log("Rerender!")
+
+    // if (this.state.toHome === true) {
+    //   return <Redirect to='/' />
+    // }
+
     return (
     <nav className='nav'>
       <ul>
@@ -39,7 +44,7 @@ class Nav extends Component {
             <span className="authorized-user">
               {authorizeUser.name}
             </span>
-            <Logout></Logout>
+            <Logout logoutRedirect={this.logoutRedirect} />
           </Fragment>
         }
       </ul>

@@ -12,6 +12,8 @@ class Logout extends Component {
 
     dispatch(unauthorizeUser())
 
+    this.props.logoutRedirect()
+
     console.log("Logout button clicked!")
   }
 
