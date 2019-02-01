@@ -15,6 +15,7 @@ class Question extends Component {
   componentDidMount() {
     const { voted } = this.props
     if (voted) this.checkAnsweredOption()
+
   }
 
   handleButtonClick = (evt) => {
@@ -65,6 +66,7 @@ class Question extends Component {
   }
 
   render() {
+    console.log(this.props)
     const { question, voted } = this.props
     // author is id of author not the name
     const { author, id, optionOne, optionTwo, timestamp } = question
