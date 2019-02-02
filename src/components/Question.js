@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import "../css/Question.css"
 import { handleSaveQuestionAnswer } from '../actions/questions.js'
 
@@ -28,6 +29,9 @@ class Question extends Component {
       qid: question.id,
       answer: key,
     }))
+
+    // Redirect to home
+    this.props.history.push("/")
   }
 
   checkAnsweredOption = () => {
@@ -131,4 +135,4 @@ function mapStateToProps({ authorizeUser }) {
   }
 }
 
-export default connect(mapStateToProps)(Question)
+export default withRouter(connect(mapStateToProps)(Question))

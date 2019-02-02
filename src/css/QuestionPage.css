@@ -1,0 +1,11 @@
+.questionpage-container {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 12px;
+  padding-top: 12px;
+  width: 600px;
+}
+
+.questionpage-container .question-container:hover {
+  cursor: default;
+}
