@@ -41,6 +41,12 @@
   width: 60%;
 }
 
+.author-question-header {
+  color: #999999;
+  font-size: 1.2em;
+  margin-bottom: 6px;
+}
+
 .options-form button {
   background-color: #247358;
   border-radius: 5px;
