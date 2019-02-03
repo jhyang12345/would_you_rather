@@ -77,8 +77,6 @@ class DetailQuestion extends Component {
   checkAnsweredOption = () => {
     const { question, authorizeUser } = this.props
     const id = authorizeUser.id
-
-
   }
 
   toggleOption = (value) => {
@@ -179,7 +177,12 @@ class DetailQuestion extends Component {
                   <div className="results-title">
                     Results:
                   </div>
-                  <div className="fixed-option-container">
+                  <div
+                    className="fixed-option-container"
+                    style={this.getCheckedAnswer() === "optionOne"
+                          ? {opacity: 1.0}
+                          : {} }
+                    >
                     <div className="fixed-option-label">
                       Would you rather {optionOne.text}..?
                     </div>
@@ -194,7 +197,12 @@ class DetailQuestion extends Component {
                       {optionOneText}
                     </div>
                   </div>
-                  <div className="fixed-option-container">
+                  <div
+                    className="fixed-option-container"
+                    style={this.getCheckedAnswer() === "optionTwo"
+                          ? {opacity: 1.0}
+                          : {} }
+                    >
                     <div className="fixed-option-label">
                       Would you rather {optionTwo.text}..?
                     </div>
@@ -203,7 +211,6 @@ class DetailQuestion extends Component {
                         className="option-progress"
                         style={{width: `${optionTwoPercentage}%`}}>
                         <span>{parseFloat(optionTwoPercentage).toFixed(1)}%</span>
-
                       </span>
                     </div>
                     <div className="option-stats-holder">
