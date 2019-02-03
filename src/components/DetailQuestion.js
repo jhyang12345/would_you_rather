@@ -1,21 +1,27 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import "../css/Question.css"
 import { handleSaveQuestionAnswer } from '../actions/questions.js'
 
 import avatar from '../images/avatar.png'
 
-class Question extends Component {
+class DetailQuestion extends Component {
 
   state = {
     selected: null,
     fixed: false,
+    voted: false,
   }
 
   componentDidMount() {
-    const { voted } = this.props
-    if (voted) this.checkAnsweredOption()
+    this.setState(() => ({
+      ...this.state,
+      voted: this.props.voted
+    }))
+
+    console.log(this.state)
+
+    if (this.state.voted) this.checkAnsweredOption()
 
   }
 
@@ -30,8 +36,12 @@ class Question extends Component {
       answer: key,
     }))
 
+    this.setState(() => ({
+      voted: true,
+    }))
+
     // Redirect to home
-    this.props.history.push("/")
+    // this.props.history.push("/")
   }
 
   checkAnsweredOption = () => {
@@ -52,19 +62,20 @@ class Question extends Component {
   }
 
   toggleOption = (value) => {
-    console.log(this.state)
     if (this.state.fixed) return
     this.setState(() => ({
       selected: value,
     }))
+    console.log(this.state, value)
   }
 
   render() {
-    console.log(this.props)
-    const { question, voted, showHeader } = this.props
-    // author is id of author not the name
+    const { question } = this.props
+
+    const { voted } = this.state
+
     const { author, id, optionOne, optionTwo, timestamp } = question
-    console.log(showHeader)
+
     return (
       <div className="question-container">
         <div className="author-header">Asked by {author}</div>
@@ -72,14 +83,6 @@ class Question extends Component {
           <img src={avatar} />
         </div>
         <div className="options-holder">
-          {
-            <div className="author-question-header">
-              Would you rather...
-            </div>
-            ? showHeader === undefined
-            : null
-          }
-
           <form className="options-form">
             <div className="radio-container">
               <input
@@ -128,9 +131,10 @@ class Question extends Component {
 }
 
 function mapStateToProps({ authorizeUser }) {
+
   return {
     authorizeUser,
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Question))
+export default withRouter(connect(mapStateToProps)(DetailQuestion))

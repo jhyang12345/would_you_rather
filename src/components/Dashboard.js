@@ -25,7 +25,7 @@ class Dashboard extends Component {
 
   redirectToQuestion = (questionId) => {
     // why is history included in props?.?
-    this.props.history.push(`/question/${questionId}`)
+    this.props.history.push(`/questions/${questionId}`)
   }
 
   render() {

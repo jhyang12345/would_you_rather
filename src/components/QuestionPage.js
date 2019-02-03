@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import "../css/QuestionPage.css"
-import Question from "./Question"
+import DetailQuestion from "./DetailQuestion"
 
 class QuestionPage extends Component {
 
@@ -18,7 +18,7 @@ class QuestionPage extends Component {
 
     return (
       <div className="questionpage-container">
-        <Question
+        <DetailQuestion
           question={question}
           voted={this.hasVoted(question)}
           />
