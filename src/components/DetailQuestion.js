@@ -16,13 +16,19 @@ class DetailQuestion extends Component {
   componentDidMount() {
     this.setState(() => ({
       ...this.state,
-      voted: this.props.voted
+      voted: this.hasVoted()
     }))
 
-    console.log(this.state)
+    if (this.state.voted === true) this.checkAnsweredOption()
 
-    if (this.state.voted) this.checkAnsweredOption()
+  }
 
+  hasVoted = () => {
+    const { question, authorizeUser } = this.props
+    const id = authorizeUser.id
+
+    return question.optionOne.votes.includes(id)
+      || question.optionTwo.votes.includes(id)
   }
 
   handleButtonClick = (evt) => {
@@ -38,27 +44,41 @@ class DetailQuestion extends Component {
 
     this.setState(() => ({
       voted: true,
+      fixed: true,
     }))
 
     // Redirect to home
     // this.props.history.push("/")
   }
 
+  getFixedOption = () => {
+    const { question, authorizeUser } = this.props
+    const id = authorizeUser.id
+    if (question.optionOne.votes.includes(id)) {
+      return true
+    } else if(question.optionTwo.votes.includes(id)) {
+      return true
+    }
+    return false
+  }
+
+  getCheckedAnswer = () => {
+    const { question, authorizeUser } = this.props
+    const id = authorizeUser.id
+    if (question.optionOne.votes.includes(id)) {
+      return "optionOne"
+    } else if(question.optionTwo.votes.includes(id)) {
+      return "optionTwo"
+    }
+  }
+
   checkAnsweredOption = () => {
     const { question, authorizeUser } = this.props
 
     const id = authorizeUser.id
-    if (question.optionOne.votes.includes(id)) {
-      this.setState(() => ({
-        selected: "optionOne",
-        fixed: true,
-      }))
-    } else if(question.optionTwo.votes.includes(id)) {
-      this.setState(() => ({
-        selected: "optionTwo",
-        fixed: true,
-      }))
-    }
+
+
+    console.log("question", id)
   }
 
   toggleOption = (value) => {
@@ -73,6 +93,8 @@ class DetailQuestion extends Component {
     const { question } = this.props
 
     const { voted } = this.state
+
+    console.log("Detail", this.state)
 
     const { author, id, optionOne, optionTwo, timestamp } = question
 
@@ -90,7 +112,7 @@ class DetailQuestion extends Component {
                 name={"radio_" + id}
                 type="radio"
                 value="optionOne"
-                disabled={this.state.fixed}
+                disabled={this.getFixedOption()}
                 checked={this.state.selected === "optionOne"}
                 />
               <label
@@ -104,7 +126,7 @@ class DetailQuestion extends Component {
                 name={"radio_" + id}
                 type="radio"
                 value="optionTwo"
-                disabled={this.state.fixed}
+                disabled={this.getFixedOption()}
                 checked={this.state.selected === "optionTwo"}
                 />
               <label
@@ -117,7 +139,7 @@ class DetailQuestion extends Component {
                 onClick={this.handleButtonClick}
                 disabled={
                   this.state.selected === null ||
-                  this.state.fixed
+                  this.getFixedOption()
                 }
                 >Submit</button>
             </div>
@@ -130,10 +152,12 @@ class DetailQuestion extends Component {
   }
 }
 
-function mapStateToProps({ authorizeUser }) {
+function mapStateToProps({ authorizeUser, questions }, props) {
+  const { questionId } = props
 
   return {
     authorizeUser,
+    question: questions[questionId],
   }
 }
 
