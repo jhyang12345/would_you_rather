@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { handleSaveQuestionAnswer } from '../actions/questions.js'
@@ -76,11 +76,9 @@ class DetailQuestion extends Component {
 
   checkAnsweredOption = () => {
     const { question, authorizeUser } = this.props
-
     const id = authorizeUser.id
 
 
-    console.log("question", id)
   }
 
   toggleOption = (value) => {
@@ -89,6 +87,21 @@ class DetailQuestion extends Component {
       selected: value,
     }))
     console.log(this.state, value)
+  }
+
+  // return object containing object
+  getOptionStats = (option) => {
+    const { question } = this.props
+    const { optionOne, optionTwo } = question
+
+    const totalVotes = optionOne.votes.length + optionTwo.votes.length
+
+    return {
+      optionOneText: `${optionOne.votes.length} out of ${totalVotes}`,
+      optionTwoText: `${optionTwo.votes.length} out of ${totalVotes}`,
+      optionOnePercentage: optionOne.votes.length / totalVotes * 100,
+      optionTwoPercentage: optionTwo.votes.length / totalVotes * 100,
+    }
   }
 
   render() {
@@ -100,15 +113,27 @@ class DetailQuestion extends Component {
 
     const { author, id, optionOne, optionTwo, timestamp } = question
 
+    const { optionOneText,
+            optionTwoText,
+            optionOnePercentage,
+            optionTwoPercentage,
+          } = this.getOptionStats()
+
     return (
       <div className="question-container">
         <div className="author-header">Asked by {author}</div>
-        <div className="author-profile-holder">
+        <div
+          className="author-profile-holder"
+          style={
+            !this.getFixedOption()
+            ? {}
+            : {height: '240px', lineHeight: '240px'}
+          }>
           <img src={avatar} />
         </div>
         <div className="options-holder">
           {
-            false
+            !this.getFixedOption()
             ? (<form className="options-form">
               <div className="radio-container">
                 <input
@@ -148,18 +173,45 @@ class DetailQuestion extends Component {
                   >Submit</button>
               </div>
             </form>)
-            : (<div className="options-fixed">
-                <div className="fixed-option-container">
-                  <div className="fixed-option-label">
-                    Would you rather {optionOne.text}
+            : (
+              <Fragment>
+                <div className="options-fixed">
+                  <div className="results-title">
+                    Results:
+                  </div>
+                  <div className="fixed-option-container">
+                    <div className="fixed-option-label">
+                      Would you rather {optionOne.text}..?
+                    </div>
+                    <div className="option-progress-holder">
+                      <span
+                        className="option-progress"
+                        style={{width: `${optionOnePercentage}%`}}>
+                        <span>{parseFloat(optionOnePercentage).toFixed(1)}%</span>
+                      </span>
+                    </div>
+                    <div className="option-stats-holder">
+                      {optionOneText}
+                    </div>
+                  </div>
+                  <div className="fixed-option-container">
+                    <div className="fixed-option-label">
+                      Would you rather {optionTwo.text}..?
+                    </div>
+                    <div className="option-progress-holder">
+                      <span
+                        className="option-progress"
+                        style={{width: `${optionTwoPercentage}%`}}>
+                        <span>{parseFloat(optionTwoPercentage).toFixed(1)}%</span>
+
+                      </span>
+                    </div>
+                    <div className="option-stats-holder">
+                      {optionTwoText}
+                    </div>
                   </div>
                 </div>
-                <div className="fixed-option-container">
-                  <div className="fixed-option-label">
-                    Would you rather {optionTwo.text}
-                  </div>
-                </div>
-              </div>)
+              </Fragment>)
           }
         </div>
       </div>

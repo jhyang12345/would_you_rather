@@ -12,13 +12,69 @@
   height: 100%;
   width: 100%;
   display: flex;
+  align-items: stretch;
   flex-direction: column;
   flex: 1;
 }
 
+.results-title {
+  flex: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 6px 0px;
+}
+
 .options-fixed .fixed-option-container {
   flex: 1;
-  align-items: stretch;
+  display: flex;
+  flex-direction: column;
   border: 1px solid #97c3c3;
   border-radius: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.options-fixed .fixed-option-container .fixed-option-label {
+  font-weight: bold;
+  color: #777;
+}
+
+.options-fixed .fixed-option-container:last-child {
+  margin-bottom: 0px;
+}
+
+.option-stats-holder {
+  margin-top: auto;
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+}
+
+.option-progress-holder {
+  background-color: #cbe8e1;
+  border-radius: 4px;
+  height: 30px;
+  margin: 10px 5px;
+  overflow: hidden;
+}
+
+.option-progress-holder .option-progress {
+  vertical-align: middle;
+  display: inline-block;
+  height: 100%;
+  line-height: 30px;
+  background-color: #96d1c2;
+  width: 10%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.option-progress-holder .option-progress span {
+  margin-right: 10px;
+  display: inline-block;
+  margin-top: 3px;
+  vertical-align: middle;
+  line-height: normal;
+  color: #888;
+  font-weight: bold;
 }

@@ -23,13 +23,14 @@
   min-height: 120px;
   float: left;
   border-right: 1px solid #CCC;
+  text-align: center;
 }
 
 .author-profile-holder img {
   width: 120px;
-  height: 120px;
-
-  display: block;
+  min-height: 120px;
+  vertical-align: middle;
+  display: inline-block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 12px;
