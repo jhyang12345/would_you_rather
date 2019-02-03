@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { handleSaveQuestionAnswer } from '../actions/questions.js'
 
+import "../css/DetailQuestion.css"
+
 import avatar from '../images/avatar.png'
 
 class DetailQuestion extends Component {
@@ -105,47 +107,60 @@ class DetailQuestion extends Component {
           <img src={avatar} />
         </div>
         <div className="options-holder">
-          <form className="options-form">
-            <div className="radio-container">
-              <input
-                onChange={this.toggleOption.bind(this, "optionOne")}
-                name={"radio_" + id}
-                type="radio"
-                value="optionOne"
-                disabled={this.getFixedOption()}
-                checked={this.state.selected === "optionOne"}
-                />
-              <label
-              htmlFor="optionOne"
-              onClick={this.toggleOption.bind(this, "optionOne")}
-              >{optionOne.text}</label>
-            </div>
-            <div className="radio-container">
-              <input
-                onChange={this.toggleOption.bind(this, "optionTwo")}
-                name={"radio_" + id}
-                type="radio"
-                value="optionTwo"
-                disabled={this.getFixedOption()}
-                checked={this.state.selected === "optionTwo"}
-                />
-              <label
-              htmlFor="optionTwo"
-              onClick={this.toggleOption.bind(this, "optionTwo")}
-              >{optionTwo.text}</label>
-            </div>
-            <div>
-              <button
-                onClick={this.handleButtonClick}
-                disabled={
-                  this.state.selected === null ||
-                  this.getFixedOption()
-                }
-                >Submit</button>
-            </div>
-
-          </form>
-
+          {
+            false
+            ? (<form className="options-form">
+              <div className="radio-container">
+                <input
+                  onChange={this.toggleOption.bind(this, "optionOne")}
+                  name={"radio_" + id}
+                  type="radio"
+                  value="optionOne"
+                  disabled={this.getFixedOption()}
+                  checked={this.state.selected === "optionOne"}
+                  />
+                <label
+                htmlFor="optionOne"
+                onClick={this.toggleOption.bind(this, "optionOne")}
+                >{optionOne.text}</label>
+              </div>
+              <div className="radio-container">
+                <input
+                  onChange={this.toggleOption.bind(this, "optionTwo")}
+                  name={"radio_" + id}
+                  type="radio"
+                  value="optionTwo"
+                  disabled={this.getFixedOption()}
+                  checked={this.state.selected === "optionTwo"}
+                  />
+                <label
+                htmlFor="optionTwo"
+                onClick={this.toggleOption.bind(this, "optionTwo")}
+                >{optionTwo.text}</label>
+              </div>
+              <div>
+                <button
+                  onClick={this.handleButtonClick}
+                  disabled={
+                    this.state.selected === null ||
+                    this.getFixedOption()
+                  }
+                  >Submit</button>
+              </div>
+            </form>)
+            : (<div className="options-fixed">
+                <div className="fixed-option-container">
+                  <div className="fixed-option-label">
+                    Would you rather {optionOne.text}
+                  </div>
+                </div>
+                <div className="fixed-option-container">
+                  <div className="fixed-option-label">
+                    Would you rather {optionTwo.text}
+                  </div>
+                </div>
+              </div>)
+          }
         </div>
       </div>
     )

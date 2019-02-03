@@ -2,6 +2,7 @@
   border: 1px solid #CCC;
   border-radius: 5px;
   overflow: auto;
+  position: relative;
 }
 
 .question-container:hover {

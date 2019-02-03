@@ -73,10 +73,10 @@ class Question extends Component {
         </div>
         <div className="options-holder">
           {
-            <div className="author-question-header">
-              Would you rather...
-            </div>
-            ? showHeader === undefined
+            showHeader !== undefined
+            ? (<div className="author-question-header">
+                Would you rather...
+              </div>)
             : null
           }
 
