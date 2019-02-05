@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link, withRouter, Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { handleReceiveUsers } from "../actions/users"
 import "../css/RankingBoard.css"
 import RankingUser from "./RankingUser"

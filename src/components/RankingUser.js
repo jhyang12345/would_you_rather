@@ -16,7 +16,7 @@ class RankingUser extends Component {
         </span>
         <div className="ranking-profile-container">
           <div className="ranking-profile-holder">
-            <img src={avatar} />
+            <img src={avatar} alt={"profile"} />
           </div>
         </div>
         <div className="ranking-info-holder">

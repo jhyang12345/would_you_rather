@@ -61,15 +61,15 @@ class Question extends Component {
 
   render() {
     console.log(this.props)
-    const { question, voted, showHeader } = this.props
+    const { question, showHeader } = this.props
     // author is id of author not the name
-    const { author, id, optionOne, optionTwo, timestamp } = question
+    const { author, id, optionOne, optionTwo } = question
     console.log(showHeader)
     return (
       <div className="question-container">
         <div className="author-header">Asked by {author}</div>
         <div className="author-profile-holder">
-          <img src={avatar} />
+          <img src={avatar} alt={"profile"} />
         </div>
         <div className="options-holder">
           {

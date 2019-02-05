@@ -21,8 +21,6 @@ class DetailQuestion extends Component {
       voted: this.hasVoted()
     }))
 
-    if (this.state.voted === true) this.checkAnsweredOption()
-
   }
 
   hasVoted = () => {
@@ -74,11 +72,6 @@ class DetailQuestion extends Component {
     }
   }
 
-  checkAnsweredOption = () => {
-    const { question, authorizeUser } = this.props
-    const id = authorizeUser.id
-  }
-
   toggleOption = (value) => {
     if (this.state.fixed) return
     this.setState(() => ({
@@ -105,11 +98,9 @@ class DetailQuestion extends Component {
   render() {
     const { question } = this.props
 
-    const { voted } = this.state
-
     console.log("Detail", this.state)
 
-    const { author, id, optionOne, optionTwo, timestamp } = question
+    const { author, id, optionOne, optionTwo } = question
 
     const { optionOneText,
             optionTwoText,
@@ -127,7 +118,7 @@ class DetailQuestion extends Component {
             ? {}
             : {height: '240px', lineHeight: '240px'}
           }>
-          <img src={avatar} />
+          <img src={avatar} alt={"profile"} />
         </div>
         <div className="options-holder">
           {

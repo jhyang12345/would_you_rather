@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   render() {
-    const {users, authorizeUser} = this.props
+    const { authorizeUser } = this.props
     return (
       <Router>
         <Fragment>

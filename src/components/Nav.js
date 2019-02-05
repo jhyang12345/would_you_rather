@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react'
 import { connect } from 'react-redux'
-import { NavLink, withRouter, Redirect } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import Logout from './Logout'
 import "../css/Nav.css"
 
@@ -10,7 +10,7 @@ class Nav extends Component {
   }
 
   logoutRedirect = () => {
-
+    console.log("Logout clicked")
   }
 
   render() {
